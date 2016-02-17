@@ -1,6 +1,7 @@
 // PATH management extension for the Inno Setup installer generatior
 // Version: 1.0
 // Author: Oleg A. Khlybov <fougas@mail.ru>
+// Homepage: https://bitbucket.org/fougas/isx
 // License: 3-clause BSD
 // Inno Setup target version: 5.5
 
