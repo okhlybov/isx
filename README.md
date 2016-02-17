@@ -8,10 +8,10 @@ Head to the [download](https://bitbucket.org/fougas/isx/downloads) page to obtai
 
 The extension's generic usage procedure is as follows:
 
-. Put the extension's _.iss_ source alongside the custom Inno Setup script.
-. Add the _[Code]_ section to the custom script.
-. Slurp the extension source with the _#include_ directive in the above section.
-. Write the extension-specific custom hook procedure(s) below the _#include_ directive. Consult the _<extension>_example.iss_ sample script for the details.
+1. Put the extension's _.iss_ source alongside the custom Inno Setup script.
+2. Add the _[Code]_ section to the custom script.
+3. Slurp the extension source with the _#include_ directive in the above section.
+4. Write the extension-specific custom hook procedure(s) below the _#include_ directive. Consult the _<extension>_example.iss_ sample script for the details.
 
 ### Path.iss ###
 
