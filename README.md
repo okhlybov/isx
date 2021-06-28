@@ -4,7 +4,7 @@ Welcome to the [Inno Setup installer](http://www.jrsoftware.org/isinfo.php) eXte
 
 This collection contains scripts which extend the functionality of the Inno Setup installer.
 
-Head to the [download](https://bitbucket.org/fougas/isx/downloads) page to obtain the latest ISX snapshot.
+Head to the [project](https://github.com/okhlybov/isx) page to obtain the latest ISX snapshot.
 
 The extension's generic usage procedure is as follows:
 
