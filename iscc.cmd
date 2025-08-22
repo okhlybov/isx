@@ -1,6 +1,7 @@
 @echo off
 
-rem Locate & invoke the Inno Setup command-line compiler
+rem https://github.com/okhlybov/isx
+rem Locate & invoke Inno Setup command-line compiler
 
 if "%ISCC%" == "" set ISCC=iscc.exe
 
@@ -26,7 +27,7 @@ for %%s in ("Inno Setup 6" "Inno Setup 5") do (
     )
 )
 
-echo "Failed to locate iscc.exe in ISCC, [PATH] or default Inno Setup locations"
+echo "iscc.exe is not found in ISCC, [PATH] or default Inno Setup locations"
 exit /b 127
 
 :iscc
