@@ -25,7 +25,7 @@ Refer to _path_example.iss_ sample script for more info.
 
 If this extension does not suit you, there is an eariler work [ModPath](http://www.legroom.net/software/modpath) worth considering.
 
-
+There is a Windows command scirpt `iscc.cmd` which can be used to locate & invoke the `iscc.exe` command-line compiler.
 
 _Happy hacking & have fun!_
 
