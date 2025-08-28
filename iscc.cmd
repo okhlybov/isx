@@ -1,14 +1,10 @@
 @echo off
+
 rem https://github.com/okhlybov/isx
 rem Locate and invoke Inno Setup command-line compiler (iscc.exe)
 rem Exit codes: 0 on success, 127 on failure to locate or install iscc.exe
 
 :start
-rem Clear previous winget attempt to avoid side effects
-set WINGET_ATTEMPTED=
-
-rem Initialize ISCC variable
-set "ISCC=iscc.exe"
 
 rem Check if a custom ISCC path is defined and valid
 if defined ISCC (
@@ -60,18 +56,20 @@ if %errorlevel% neq 0 (
     exit /b 127
 )
 
+rem Prevent infinite recursion by checking winget attempts
+if "%WINGET_ATTEMPTED%"=="1" (
+    echo Error: winget installation attempted but iscc.exe still not found
+    exit /b 127
+)
+
+echo iscc.exe not found in ISCC, [PATH] or default Inno Setup locations
+
 rem Attempt to install Inno Setup via winget
-echo iscc.exe not found in ISCC, PATH, or default Inno Setup locations
 echo Attempting to install Inno Setup silently using winget...
 winget install --id JRSoftware.InnoSetup --silent --accept-source-agreements --accept-package-agreements
+set WINGET_ATTEMPTED=1
 if %errorlevel%==0 (
-    echo Inno Setup installed successfully, checking default installation path...
-    rem Check likely installation path first
-    if exist "%programfiles%\Inno Setup 6\iscc.exe" (
-        set "ISCC=%programfiles%\Inno Setup 6\iscc.exe"
-        goto :iscc
-    )
-    rem Restart full search
+    echo Inno Setup installed successfully, restarting search...
     goto :start
 )
 
@@ -80,13 +78,18 @@ echo Error: Failed to install Inno Setup via winget
 exit /b 127
 
 :iscc
+
 rem Validate ISCC path
 if not exist "%ISCC%" (
     echo Error: Invalid ISCC path: %ISCC%
     exit /b 127
 )
 
+rem Clear winget attempt flag before invocation
+set WINGET_ATTEMPTED=
+
 rem Execute the compiler
 echo Executing Inno Setup compiler: %ISCC%
 "%ISCC%" %*
+
 exit /b %errorlevel%
